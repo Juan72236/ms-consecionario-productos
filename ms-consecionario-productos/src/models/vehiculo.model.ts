@@ -5,6 +5,8 @@ import {Proveedor} from './proveedor.model';
 import {Categoria} from './categoria.model';
 import {CategoriaVehiculo} from './categoria-vehiculo.model';
 
+//modelo de la entidad vehiculo
+
 @model()
 export class Vehiculo extends Entity {
   @property({
