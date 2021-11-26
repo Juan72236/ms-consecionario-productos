@@ -1,4 +1,9 @@
-import {Entity, model, property} from '@loopback/repository';
+import {belongsTo, Entity, model, property, hasMany} from '@loopback/repository';
+import {Marca} from './marca.model';
+import {Foto} from './foto.model';
+import {Proveedor} from './proveedor.model';
+import {Categoria} from './categoria.model';
+import {CategoriaVehiculo} from './categoria-vehiculo.model';
 
 @model()
 export class Vehiculo extends Entity {
@@ -51,6 +56,17 @@ export class Vehiculo extends Entity {
   })
   existencia: number;
 
+  @belongsTo(() => Marca, {name: 'UnVehiculoPerteneceAUnaMarca'})
+  idMarca: number;
+
+  @hasMany(() => Foto, {keyTo: 'IdVehiculo'})
+  vehiculoTieneMuchasFotos: Foto[];
+
+  @belongsTo(() => Proveedor, {name: 'VehiculoPerteneceAUnProveedor'})
+  IdProveedor: number;
+
+  @hasMany(() => Categoria, {through: {model: () => CategoriaVehiculo, keyFrom: 'IdVehiculo'}})
+  categorias: Categoria[];
 
   constructor(data?: Partial<Vehiculo>) {
     super(data);

@@ -7,8 +7,8 @@ const config = {
   url: '',
   host: 'localhost',
   port: 3306,
-  user: 'Juan Pablo DB',
-  password: 'JuanPabloDeveloper2021',
+  user: 'root',
+  password: '',
   database: 'ConsecionarioDB'
 };
 
