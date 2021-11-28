@@ -7,7 +7,26 @@ import {CategoriaVehiculo} from './categoria-vehiculo.model';
 
 //modelo de la entidad vehiculo
 
-@model()
+@model({
+  //llave foranea IDMarca
+  settings: {
+    foreignKeys: {
+      fk_vehiculo_idMarca: {
+        name: 'fk_vehiculo_idMarca',
+        entity: 'Marca',
+        entityKey: 'id',
+        foreignKey: 'idMarca' 
+      },
+      //llave foranea IDProveedor
+      fk_vehiculo_IdProveedor: {
+        name: 'fk_vehiculo_IdProveedor',
+        entity: 'Proveedor',
+        entityKey: 'id',
+        foreignKey: 'IdProveedor'
+      },
+    },
+  },
+})
 export class Vehiculo extends Entity {
   @property({
     type: 'number',
