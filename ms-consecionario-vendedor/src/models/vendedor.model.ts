@@ -1,4 +1,5 @@
-import {Entity, model, property} from '@loopback/repository';
+import {Entity, model, property, hasOne} from '@loopback/repository';
+import {UsuarioVendedor} from './usuario-vendedor.model';
 
 @model()
 export class Vendedor extends Entity {
@@ -33,6 +34,8 @@ export class Vendedor extends Entity {
   })
   Correo: string;
 
+  @hasOne(() => UsuarioVendedor, {keyTo: 'IdVendedor'})
+  vendedorTieneUnUsuario: UsuarioVendedor;
 
   constructor(data?: Partial<Vendedor>) {
     super(data);
