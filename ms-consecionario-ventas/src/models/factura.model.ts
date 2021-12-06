@@ -1,6 +1,18 @@
-import {Entity, model, property} from '@loopback/repository';
+import {Entity, model, property, belongsTo} from '@loopback/repository';
+import {Ventas} from './ventas.model';
 
-@model()
+@model({
+  settings: {
+    foreignKeys: {
+      fk_Factura_IdVenta: {
+        name: 'fk_Factura_IdVenta',
+        entity: 'Ventas',
+        entityKey: 'id',
+        foreignKey: 'IdVenta'
+      },
+    },
+  },
+})
 export class Factura extends Entity {
   @property({
     type: 'number',
@@ -8,12 +20,11 @@ export class Factura extends Entity {
     generated: true,
   })
   id?: number;
-
   @property({
     type: 'number',
     required: true,
   })
-  consecutivo: number;
+  Cosecutivo: number;
 
   @property({
     type: 'date',
@@ -27,6 +38,8 @@ export class Factura extends Entity {
   })
   PrecioVenta: number;
 
+  @belongsTo(() => Ventas, {name: 'unaFacturaPerteneceAUnaventa'})
+  IdVenta: number;
 
   constructor(data?: Partial<Factura>) {
     super(data);
