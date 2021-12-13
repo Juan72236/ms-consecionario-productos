@@ -39,7 +39,7 @@ export class RolUsuarioController {
     },
   })
   async find(
-    @param.path.number('id') id: number,
+    @param.path.number('id') id: string,
     @param.query.object('filter') filter?: Filter<Usuario>,
   ): Promise<Usuario[]> {
     return this.rolRepository.rolEstaAsociadoAmuchosUsuarios(id).find(filter);
@@ -54,7 +54,7 @@ export class RolUsuarioController {
     },
   })
   async create(
-    @param.path.number('id') id: typeof Rol.prototype.id,
+    @param.path.string('_id') id: typeof Rol.prototype.id,
     @requestBody({
       content: {
         'application/json': {
@@ -79,7 +79,7 @@ export class RolUsuarioController {
     },
   })
   async patch(
-    @param.path.number('id') id: number,
+    @param.path.number('id') id: string,
     @requestBody({
       content: {
         'application/json': {
@@ -102,7 +102,7 @@ export class RolUsuarioController {
     },
   })
   async delete(
-    @param.path.number('id') id: number,
+    @param.path.number('id') id: string,
     @param.query.object('where', getWhereSchemaFor(Usuario)) where?: Where<Usuario>,
   ): Promise<Count> {
     return this.rolRepository.rolEstaAsociadoAmuchosUsuarios(id).delete(where);

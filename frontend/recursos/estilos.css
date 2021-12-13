@@ -1,0 +1,35 @@
+body{
+    background-color: burlywood;
+}
+
+input{
+    border: 2px double red;
+    text-align: center;
+    color: red;
+}
+
+#miDivision{
+    border: 4px solid gray;
+    height: 100px;
+    width: 80%;
+}
+
+#consecionario{
+    width: 30%;
+    height: auto;
+    border: 2px solid red;
+}
+
+.fondoAzul{
+    background-color: blue;
+}
+
+.bordeBlanco{
+    border: 2px double white !important;
+    border-radius: 10;
+}
+
+input[type=button]:hover{
+    background-color: yellow; 
+    cursor: pointer;
+}
